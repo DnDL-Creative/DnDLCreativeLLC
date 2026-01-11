@@ -1,0 +1,240 @@
+@import "tailwindcss";
+
+@theme {
+  /* --- BRAND PALETTE --- */
+  --color-primary: #0d9488;
+  --color-primary-light: #5eead4;
+  --color-primary-dark: #115e59;
+  --color-secondary: #d4a373;
+
+  /* --- BRAND GRADIENT --- */
+  --color-brand-start: #14b8a6;
+  --color-brand-mid: #6366f1;
+  --color-brand-end: #a855f7;
+
+  /* --- BASE TOKENS --- */
+  --color-bg: #e2e8f0;
+  --color-surface: #f8fafc;
+  --color-text-main: #1f2937;
+
+  /* --- UTILITIES & ANIMATIONS --- */
+  --animate-fade-in: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-up: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-gradient-xy: gradient-xy 3s ease infinite;
+  --animate-gradient-x: gradient-x 10s ease infinite;
+  --animate-ticker: ticker 30s linear infinite;
+  --animate-glitch: glitch 4000ms infinite;
+  --animate-wave: wave 2.5s ease-in-out infinite;
+
+  /* --- KEYFRAMES --- */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes gradient-xy {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  @keyframes gradient-x {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  @keyframes ticker {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes wave {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-4px) rotate(-2deg);
+    }
+    75% {
+      transform: translateY(2px) rotate(2deg);
+    }
+  }
+  @keyframes glitch {
+    0% {
+      text-shadow: 0.05em 0 0 rgba(255, 0, 81, 0.8),
+        -0.05em -0.025em 0 rgba(0, 255, 225, 0.8);
+    }
+    15% {
+      text-shadow: -0.05em -0.025em 0 rgba(255, 0, 81, 0.8),
+        0.025em 0.025em 0 rgba(0, 255, 225, 0.8);
+    }
+    50% {
+      text-shadow: 0.025em 0.05em 0 rgba(255, 0, 81, 0.8),
+        0.05em 0 0 rgba(0, 255, 225, 0.8);
+    }
+    100% {
+      text-shadow: -0.025em 0 0 rgba(255, 0, 81, 0.8),
+        -0.025em -0.025em 0 rgba(0, 255, 225, 0.8);
+    }
+  }
+}
+
+@layer base {
+  :root {
+    --nav-height: 80px;
+    --radius-lg: 1.5rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+
+    /* GLOBAL SCALING LOGIC:
+      75%  = 1rem is 12px (High Density Dashboard)
+      100% = 1rem is 16px (Standard Web)
+    */
+    font-size: 75%;
+  }
+
+  /* Responsive Scaling: On 4K screens, bump back to 16px so it's not microscopic */
+  @media (min-width: 1536px) {
+    html {
+      font-size: 100%;
+    }
+  }
+
+  body {
+    background-color: transparent;
+    color: var(--color-text-main);
+    font-family: "Nunito Sans", sans-serif;
+    transition: none;
+
+    /* Inherits the rem scale set in html */
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Dark mode overrides */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg: #0f172a;
+      --color-surface: #1e293b;
+      --color-text-main: #f3f4f6;
+    }
+  }
+  .dark {
+    --color-bg: #0f172a;
+    --color-surface: #1e293b;
+    --color-text-main: #f3f4f6;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.6em;
+  }
+}
+
+@layer components {
+  /* --- TYPOGRAPHY (Smart Responsive Classes) --- */
+
+  /* H1: The Signature "Wave" Title */
+  .h1-wave {
+    display: inline-block;
+    /* Responsive Sizing: Mobile -> Tablet -> Desktop */
+    @apply text-4xl md:text-5xl lg:text-7xl;
+    @apply font-black uppercase tracking-tight leading-none mb-4;
+
+    /* Visuals */
+    @apply text-transparent bg-clip-text;
+    @apply bg-gradient-to-r from-brand-start via-brand-mid to-brand-end;
+    @apply bg-[length:200%_auto] animate-gradient-x drop-shadow-sm;
+  }
+
+  /* H2: Core Section Header */
+  .h2-core {
+    /* Responsive Sizing: Mobile -> Tablet */
+    @apply text-2xl md:text-4xl;
+    @apply font-black uppercase text-slate-900 tracking-tight mb-4;
+  }
+
+  /* H3: Accent Subhead */
+  .h3-accent {
+    @apply text-xl md:text-2xl;
+    @apply font-bold text-primary tracking-wide mb-3;
+  }
+
+  /* H4: Label */
+  .h4-label {
+    @apply text-xs md:text-sm;
+    @apply font-black text-slate-400 uppercase tracking-[0.2em] mb-2;
+  }
+
+  /* Body Text */
+  .body-text {
+    @apply text-base md:text-lg;
+    @apply text-slate-600 leading-relaxed font-medium;
+  }
+
+  /* Hero Specifics */
+  .hero-title {
+    @apply text-balance font-semibold leading-[1.05] tracking-tight px-4 max-w-5xl mx-auto;
+    @apply text-3xl md:text-4xl lg:text-5xl mb-6 md:mb-10;
+  }
+
+  .hero-caption {
+    @apply block text-center text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mt-6 mb-8;
+  }
+
+  .hero-text-gradient {
+    @apply text-transparent bg-clip-text;
+    @apply bg-gradient-to-r from-brand-start via-brand-mid to-brand-end;
+    @apply bg-[length:200%_auto] animate-gradient-x drop-shadow-sm;
+  }
+
+  /* --- UI CONTAINERS --- */
+  .glass-panel {
+    @apply backdrop-blur-xl border border-white/10 shadow-xl;
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .dark .glass-panel {
+    background: rgba(23, 23, 23, 0.6);
+    @apply border-white/5;
+  }
+}
