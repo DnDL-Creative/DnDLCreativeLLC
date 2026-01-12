@@ -111,19 +111,7 @@
 
   html {
     scroll-behavior: smooth;
-
-    /* GLOBAL SCALING LOGIC:
-      75%  = 1rem is 12px (High Density Dashboard)
-      100% = 1rem is 16px (Standard Web)
-    */
-    font-size: 75%;
-  }
-
-  /* Responsive Scaling: On 4K screens, bump back to 16px so it's not microscopic */
-  @media (min-width: 1536px) {
-    html {
-      font-size: 100%;
-    }
+    /* REMOVED: font-size: 75% - This was shrinking your entire app */
   }
 
   body {
@@ -131,9 +119,6 @@
     color: var(--color-text-main);
     font-family: "Nunito Sans", sans-serif;
     transition: none;
-
-    /* Inherits the rem scale set in html */
-    font-size: 1rem;
     line-height: 1.5;
   }
 
@@ -176,11 +161,8 @@
   /* H1: The Signature "Wave" Title */
   .h1-wave {
     display: inline-block;
-    /* Responsive Sizing: Mobile -> Tablet -> Desktop */
-    @apply text-4xl md:text-5xl lg:text-7xl;
+    @apply text-4xl md:text-6xl; /* Increased slightly to match original */
     @apply font-black uppercase tracking-tight leading-none mb-4;
-
-    /* Visuals */
     @apply text-transparent bg-clip-text;
     @apply bg-gradient-to-r from-brand-start via-brand-mid to-brand-end;
     @apply bg-[length:200%_auto] animate-gradient-x drop-shadow-sm;
@@ -188,7 +170,6 @@
 
   /* H2: Core Section Header */
   .h2-core {
-    /* Responsive Sizing: Mobile -> Tablet */
     @apply text-2xl md:text-4xl;
     @apply font-black uppercase text-slate-900 tracking-tight mb-4;
   }
@@ -214,7 +195,7 @@
   /* Hero Specifics */
   .hero-title {
     @apply text-balance font-semibold leading-[1.05] tracking-tight px-4 max-w-5xl mx-auto;
-    @apply text-3xl md:text-4xl lg:text-5xl mb-6 md:mb-10;
+    @apply text-3xl md:text-5xl mb-6 md:mb-10;
   }
 
   .hero-caption {

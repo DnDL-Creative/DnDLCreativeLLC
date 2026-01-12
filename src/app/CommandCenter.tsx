@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { createClient } from "@/lib/supabase/client"; // Connect to Supabase
+import { createClient } from "@/lib/supabase/client";
 import {
   ListTodo,
   CircleDollarSign,
@@ -20,7 +20,7 @@ import styles from "./CommandCenter.module.css";
 
 export default function CommandCenter() {
   const router = useRouter();
-  const supabase = createClient(); // Initialize client
+  const supabase = createClient();
 
   const handleSignOut = async () => {
     // 1. Kill the session on Supabase
@@ -51,7 +51,7 @@ export default function CommandCenter() {
 
         {/* FLEX CONTAINER */}
         <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-          {/* 1. TO DO APP (Purple) */}
+          {/* 1. TO DO APP (Purple) - Placeholder */}
           <Link
             href="/apps/todo"
             className={`${styles.appCard} ${styles.cardTodo} group`}
@@ -81,7 +81,7 @@ export default function CommandCenter() {
             </div>
           </Link>
 
-          {/* 2. LEDGER (Teal) */}
+          {/* 2. LEDGER (Teal) - Placeholder */}
           <Link
             href="/apps/bookkeeping"
             className={`${styles.appCard} ${styles.cardLedger} group`}
@@ -113,7 +113,7 @@ export default function CommandCenter() {
 
           {/* 3. AUDIOBOOK ACTOR (Amber) */}
           <Link
-            href="/admin/audiobook-production-manager"
+            href="/audiobook-production-manager"
             className={`${styles.appCard} ${styles.cardAudio} group`}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -143,7 +143,7 @@ export default function CommandCenter() {
 
           {/* 4. CINESONIC PRODUCTIONS (Indigo) */}
           <Link
-            href="/admin/cinesonic"
+            href="/cinesonic"
             className={`${styles.appCard} ${styles.cardCine} group`}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -173,7 +173,7 @@ export default function CommandCenter() {
 
           {/* 5. VOICEOVER TRACKER (Cyan) */}
           <Link
-            href="/admin/voiceover-tracker"
+            href="/voiceover-tracker"
             className={`${styles.appCard} ${styles.cardVoice} group`}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -203,7 +203,7 @@ export default function CommandCenter() {
 
           {/* 6. VIBE WRITER (Rose) */}
           <Link
-            href="/admin/vibe-writer"
+            href="/vibewriter"
             className={`${styles.appCard} ${styles.cardVibe} group`}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-rose-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
