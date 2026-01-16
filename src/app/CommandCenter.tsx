@@ -51,9 +51,9 @@ export default function CommandCenter() {
 
         {/* FLEX CONTAINER */}
         <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-          {/* 1. TO DO APP (Purple) - Placeholder */}
+          {/* 1. TO DO APP (Purple) - UPDATED LINK */}
           <Link
-            href="/apps/todo"
+            href="/task-master"
             className={`${styles.appCard} ${styles.cardTodo} group`}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

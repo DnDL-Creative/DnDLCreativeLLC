@@ -1,0 +1,126 @@
+@reference "../../../app/globals.css";
+
+/* --- LAYOUT & ATMOSPHERE --- */
+.pageWrapper {
+  @apply min-h-screen w-full flex flex-col relative overflow-x-hidden;
+  background-color: var(--color-bg);
+  /* Mobile: Less padding, auto height */
+  @apply p-2 pb-20 md:p-6 md:h-screen md:overflow-hidden;
+}
+
+.atmosphereBlob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(8rem);
+  pointer-events: none;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.blobPrimary {
+  background-color: var(--color-brand-mid);
+  top: -10%;
+  left: -10%;
+  width: 40rem;
+  height: 40rem;
+}
+
+.blobSecondary {
+  background-color: var(--color-brand-end);
+  bottom: -10%;
+  right: -10%;
+  width: 50rem;
+  height: 50rem;
+}
+
+/* --- GRID LAYOUT --- */
+.container {
+  @apply max-w-[1920px] w-full mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 h-full;
+}
+
+/* --- SIDEBAR NAV (Left Col) --- */
+.sidebar {
+  /* Hidden on mobile (handled by JS component), visible on LG */
+  @apply hidden lg:flex lg:col-span-2 flex-col gap-4 overflow-y-auto pr-2 pb-10;
+}
+
+.navButton {
+  @apply flex items-center gap-3 p-3 md:p-4 rounded-xl border transition-all duration-300 w-full text-left;
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-main);
+}
+
+.navButton:hover {
+  @apply bg-white/5 border-purple-500/30 translate-x-1;
+}
+
+.navButtonActive {
+  @apply bg-purple-500/10 border-purple-500/50 text-purple-300;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.1);
+}
+
+/* --- MAIN WORKSPACE (Center Col) --- */
+.workspace {
+  @apply lg:col-span-10 flex flex-col gap-4 h-full overflow-hidden;
+}
+
+/* --- HEADER (THE FIX) --- */
+.header {
+  /* Mobile: Column (Stack), Desktop: Row (Side-by-Side) */
+  @apply flex flex-col md:flex-row md:justify-between md:items-end gap-4 pb-4 border-b border-white/10 shrink-0;
+}
+
+.headerTitleBlock {
+  @apply w-full md:w-auto;
+}
+
+.headerForm {
+  @apply flex gap-2 w-full md:max-w-md items-stretch md:items-end;
+}
+
+.title {
+  /* Mobile: Smaller text, tighter leading */
+  @apply text-2xl md:text-5xl font-black uppercase tracking-tight leading-none;
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-indigo-300;
+}
+
+.subtitle {
+  @apply text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-slate-500 mb-1 md:mt-2;
+}
+
+/* --- CONTENT PANEL --- */
+.panel {
+  @apply flex-grow overflow-y-auto rounded-xl md:rounded-[2rem] border relative;
+  /* Mobile: Less padding */
+  @apply p-3 md:p-6;
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+}
+
+/* --- ITEM CARDS --- */
+.itemCard {
+  @apply p-3 md:p-4 mb-3 rounded-xl border border-white/5 bg-white/5 transition-all flex items-start gap-3 md:gap-4;
+}
+.itemCard:hover {
+  @apply border-purple-500/30 bg-white/10;
+}
+
+/* Checkbox */
+.checkbox {
+  @apply w-5 h-5 md:w-6 md:h-6 rounded md:rounded-md border-2 border-slate-600 flex items-center justify-center cursor-pointer transition-colors mt-0.5;
+}
+.checkboxChecked {
+  @apply bg-purple-500 border-purple-500;
+}
+
+/* Tags */
+.tag {
+  @apply px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-bold border;
+}
+
+/* Code Editor overrides */
+.codeBlock {
+  @apply font-mono text-xs md:text-sm bg-slate-950/50 p-3 md:p-4 rounded-lg border border-white/10 text-emerald-400 w-full overflow-x-auto;
+}

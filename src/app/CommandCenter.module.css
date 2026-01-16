@@ -82,10 +82,15 @@
 
 /* --- APP CARDS --- */
 .appCard {
-  @apply relative p-6 md:p-8 rounded-[2rem] border transition-all duration-500 overflow-hidden flex flex-col items-center text-center;
+  /* UPDATED: Reduced padding from p-6/8 to p-5/6 */
+  @apply relative p-5 md:p-6 rounded-[1.5rem] border transition-all duration-500 overflow-hidden flex flex-col items-center text-center;
+
   width: 100%;
-  max-width: 33rem;
-  min-height: 20rem;
+
+  /* UPDATED: Tighter dimensions */
+  max-width: 26rem; /* Was 33rem */
+  min-height: 16rem; /* Was 20rem */
+
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.1);
@@ -102,7 +107,8 @@
 }
 
 .cardIcon {
-  @apply relative z-10 w-20 h-20 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300 border;
+  /* UPDATED: Reduced size (w-20 -> w-16) & margin (mb-4 -> mb-3) */
+  @apply relative z-10 w-16 h-16 rounded-2xl flex items-center justify-center mb-3 transition-transform duration-300 border;
   background-color: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.1);
 }
@@ -113,8 +119,9 @@
 
 /* --- TYPOGRAPHY --- */
 .cardTextGroup {
-  @apply flex flex-col items-center justify-center w-full px-4;
-  gap: 0.5rem;
+  /* UPDATED: Reduced padding and gap */
+  @apply flex flex-col items-center justify-center w-full px-2;
+  gap: 0.25rem;
 }
 
 .cardTitle {
